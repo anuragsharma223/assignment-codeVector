@@ -42,18 +42,18 @@ app.get("/products", async (req: Request, res: Response) => {
       .from(productsTable)
       .where(filters.length > 0 ? and(...filters) : undefined)
       .orderBy(desc(productsTable.updatedAt), desc(productsTable.id))
-      .limit(limit);
-    const nextCursor =
-      products.length > 0
-        ? {
-            cursorId: products[products.length - 1].id || undefined,
-            cursorUpdatedAt:
-              products[products.length - 1].updatedAt || undefined,
-          }
-        : undefined;
+      .limit(limit + 1);
+
+    const hasMore = products.length > limit;
+    const paginated_products = hasMore ? products.slice(0, limit) : products;
+    ///@ts-ignore
+    const nextCursor = products?.length > 0 && {
+      cursorId: products[products.length - 1]?.id || undefined,
+      cursorUpdatedAt: products[products.length - 1]?.updatedAt || undefined,
+    };
 
     res.json({
-      products,
+      products: paginated_products,
       nextCursor: nextCursor,
     });
   } catch (err) {
