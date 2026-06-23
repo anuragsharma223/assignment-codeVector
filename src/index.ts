@@ -12,11 +12,8 @@ const app = express();
 app.get("/products", async (req: Request, res: Response) => {
   try {
     const limit = Math.min(Number(req.query.limit) || 20, 100);
-
     const category = (req.query.category as any) || undefined;
-
     const cursorId = (req.query.cursorId as any) || undefined;
-
     const cursorUpdatedAt = (req.query.cursorUpdatedAt as any) || new Date();
 
     const filters = [];
@@ -24,7 +21,8 @@ app.get("/products", async (req: Request, res: Response) => {
     if (category) {
       filters.push(eq(productsTable.category, category));
     }
-    // get items before cursor
+
+    // get items before cursor and check if cursor is provided other wise it'll show error
     if (cursorUpdatedAt && cursorId) {
       filters.push(
         or(
