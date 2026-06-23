@@ -11,6 +11,9 @@ export const productsTable = pgTable("products", {
   name: text("name").notNull(),
   category: text("category").notNull(),
   price: integer("price").notNull(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+// npx drizzle-kit generate
+//npx drizzle-kit migrate

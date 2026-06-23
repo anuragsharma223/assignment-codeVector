@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/anuragsharma223/assignment-codeVector#readme",
   "dependencies": {
+    "@faker-js/faker": "^10.5.0",
     "@neondatabase/serverless": "^1.1.0",
     "@types/express": "^5.0.6",
     "dotenv": "^17.4.2",
