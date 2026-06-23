@@ -1,13 +1,7 @@
-import {
-  integer,
-  text,
-  pgTable,
-  timestamp,
-  bigserial,
-} from "drizzle-orm/pg-core";
+import { integer, text, pgTable, timestamp, serial } from "drizzle-orm/pg-core";
 
 export const productsTable = pgTable("products", {
-  id: bigserial("id", { mode: "number" }).primaryKey(),
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: text("name").notNull(),
   category: text("category").notNull(),
   price: integer("price").notNull(),

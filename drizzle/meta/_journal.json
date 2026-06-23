@@ -22,6 +22,20 @@
       "when": 1782218850921,
       "tag": "0002_ancient_scarecrow",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1782223682769,
+      "tag": "0003_brown_gressill",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782224434691,
+      "tag": "0004_pink_beyonder",
+      "breakpoints": true
     }
   ]
 }
