@@ -225,3 +225,12 @@ npm run build && npm run start
 - [Cursor Pagination Best Practices](https://www.cognito.com/blog/designing-efficient-cursor-pagination)
 - [PostgreSQL Indexing Guide](https://www.postgresql.org/docs/current/indexes.html)
 - [Drizzle ORM Documentation](https://orm.drizzle.team/)
+
+## What I CAN IMPROVE FURTHER AND HOW ?
+
+1. I can introduce Master slave architecture. In which I would not implement indexes in the master db. And implement indexes only in the read replicas. So that we wont have to care about the write trade offs using indexes.
+2. I can dockerize the application using docker so that the environment is same for every developer using this repo the setup will be easier.
+3. I can put the database connection variable as global so that every server has atmost one connection to the database.
+4. I can futher make use of caches like Redis so to decrease further round trips to the database.
+5. I can also introduce message queues so that the db requests can process requests in batches.
+6. I can containerize the application using kubernetes on a paid pod instance on digital ocean. So that the database can autoscale scale with the growing and decreasing users.
