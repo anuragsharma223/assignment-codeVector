@@ -11,7 +11,10 @@ const app = express();
 
 app.get("/products", async (req: Request, res: Response) => {
   try {
-    const limit = Math.min(Number(req.query.limit) || 20, 100);
+    const limit = Math.min(
+      Number(req.query.limit) > 0 ? Number(req.query.limit) : 20,
+      100,
+    );
     const category = (req.query.category as any) || undefined;
     const cursorId = Number(req.query.cursorId as any) || undefined;
     const rawCursor = req.query.cursorUpdatedAt as string | undefined;
