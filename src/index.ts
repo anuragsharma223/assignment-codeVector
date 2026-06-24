@@ -2,8 +2,8 @@
 import "dotenv/config";
 import express, { type Request, type Response } from "express";
 import { drizzle } from "drizzle-orm/neon-http";
-import { and, or, eq, lt, desc, type SQLWrapper } from "drizzle-orm";
-import { productsTable } from "./db/schema.ts";
+import { and, or, eq, lt, desc } from "drizzle-orm";
+import { productsTable } from "./db/schema.js";
 //env variables
 const port = process.env.PORT;
 const db = drizzle(process.env.DATABASE_URL!);
@@ -59,6 +59,10 @@ app.get("/products", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World");
+});
+
 app.listen(port, () => {
-  console.log("Server is running on port 3000");
+  console.log(`Server is running on port ${port}`);
 });

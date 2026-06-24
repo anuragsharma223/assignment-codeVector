@@ -14,12 +14,12 @@
     "types": ["node"],
     // and npm install -D @types/node
 
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
     // Other Outputs
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
+    // "emitDeclarationOnly": true,
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -41,5 +41,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
