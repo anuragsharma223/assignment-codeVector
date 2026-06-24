@@ -13,9 +13,11 @@ app.get("/products", async (req: Request, res: Response) => {
   try {
     const limit = Math.min(Number(req.query.limit) || 20, 100);
     const category = (req.query.category as any) || undefined;
-    const cursorId = (req.query.cursorId as any) || undefined;
-    const cursorUpdatedAt = (req.query.cursorUpdatedAt as any) || new Date();
-
+    const cursorId = Number(req.query.cursorId as any) || undefined;
+    const rawCursor = req.query.cursorUpdatedAt as string | undefined;
+    const cursorUpdatedAt = rawCursor ? new Date(rawCursor) : null;
+    // console.log(cursorUpdatedAt);
+    // console.log(req.query.cursorUpdatedAt);
     const filters = [];
 
     if (category) {
@@ -53,6 +55,7 @@ app.get("/products", async (req: Request, res: Response) => {
     res.json({
       products: paginated_products,
       nextCursor: nextCursor,
+      size: paginated_products.length,
     });
   } catch (err) {
     console.error("Error fetching products:", err);
